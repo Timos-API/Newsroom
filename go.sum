@@ -1,6 +1,4 @@
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
-github.com/Timos-API/Authenticator v0.0.0-20210703100124-cb51ab0729b9 h1:EP/oTgRGNYG16N92IC+yOSJPOOtXVRc+ymKqPOdP3QA=
-github.com/Timos-API/Authenticator v0.0.0-20210703100124-cb51ab0729b9/go.mod h1:MbghF2NFVUbiv4fdaTJ2XgbFGwDl4rKSL1PB/JNZLy4=
 github.com/Timos-API/Authenticator v0.0.0-20210703193204-2644ad8e020b h1:13Mnuz95vXRC55Y3Qyqg4tftbCI2qP4cbmr5DJFcrS0=
 github.com/Timos-API/Authenticator v0.0.0-20210703193204-2644ad8e020b/go.mod h1:MbghF2NFVUbiv4fdaTJ2XgbFGwDl4rKSL1PB/JNZLy4=
 github.com/aws/aws-sdk-go v1.34.28 h1:sscPpn/Ns3i0F4HPEWAVcwdIRaZZCuL7llJ2/60yPIk=
