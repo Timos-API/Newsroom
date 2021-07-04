@@ -110,6 +110,18 @@ func getFeaturedNews(w http.ResponseWriter, req *http.Request) {
 	}})
 }
 
+func getProjects(w http.ResponseWriter, req *http.Request) {
+	result, err := collection().Distinct(ctx.Background(), "project", bson.M{})
+
+	if err != nil {
+		printError(w, err.Error())
+		return
+	}
+
+	json.NewEncoder(w).Encode(result)
+
+}
+
 func getProjectNews(w http.ResponseWriter, req *http.Request) {
 	params := mux.Vars(req)
 	projectId := params["id"]

@@ -13,6 +13,7 @@ func RegisterRoutes(router *mux.Router) {
 
 	s.HandleFunc("", getAllNews).Methods("GET")
 	s.HandleFunc("/featured", getFeaturedNews).Methods("GET")
+	s.HandleFunc("/projects", getProjects).Methods("GET")
 	s.HandleFunc("/project/{id}", getProjectNews).Methods("GET")
 	s.HandleFunc("/{id}", getNews).Methods("GET")
 
