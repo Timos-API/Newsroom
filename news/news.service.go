@@ -46,7 +46,8 @@ func getNewsById(newsId string) *News {
 }
 
 func getAll(w http.ResponseWriter, req *http.Request, filter primitive.M) {
-	options := options.Find()
+	options := options.Find().SetSort(map[string]int{"timestamp": -1})
+
 	query := req.URL.Query()
 	qLimit, qSkip, qQuery := query.Get("limit"), query.Get("skip"), query.Get("query")
 
@@ -99,7 +100,6 @@ func getAll(w http.ResponseWriter, req *http.Request, filter primitive.M) {
 }
 
 func getAllNews(w http.ResponseWriter, req *http.Request) {
-	fmt.Println("get all")
 	getAll(w, req, bson.M{})
 }
 

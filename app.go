@@ -17,6 +17,7 @@ func main() {
 	database.Connect()
 
 	router := mux.NewRouter()
+	router.Use(routerMw)
 	router.StrictSlash(true)
 
 	handler := cors.New(cors.Options{
