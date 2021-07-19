@@ -4,9 +4,11 @@ import (
 	"Timos-API/Newsroom/helper"
 	"Timos-API/Newsroom/persistence"
 	"context"
+	"errors"
 
 	"github.com/Timos-API/transformer"
 	"github.com/go-playground/validator"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 type NewsService struct {
@@ -35,7 +37,19 @@ func (s *NewsService) GetProjectNews(ctx context.Context, projectId string, quer
 }
 
 func (s *NewsService) GetNews(ctx context.Context, newsId string) (*persistence.News, error) {
-	return s.p.GetById(ctx, newsId)
+	oid, err := primitive.ObjectIDFromHex(newsId)
+	if err != nil {
+		limit := 1
+		news, err := s.p.GetByQuery(ctx, &newsId, &limit, nil)
+		if err != nil {
+			return nil, err
+		}
+		if len(*news) > 0 {
+			return &(*news)[0], nil
+		}
+		return nil, errors.New("no news found")
+	}
+	return s.p.GetById(ctx, oid.Hex())
 }
 
 func (s *NewsService) DeleteNews(ctx context.Context, newsId string) (bool, error) {
