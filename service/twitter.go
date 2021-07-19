@@ -4,7 +4,6 @@ import (
 	"Timos-API/Newsroom/persistence"
 	"encoding/base64"
 	"errors"
-	"fmt"
 	"io"
 	"net/http"
 	"net/url"
@@ -33,7 +32,6 @@ func (s *TwitterService) SendTweet(news *persistence.News) (*anaconda.Tweet, err
 	res, err := http.Get(news.Thumbnail)
 
 	if err != nil {
-		fmt.Println(err)
 		return nil, err
 	}
 	defer res.Body.Close()

@@ -38,7 +38,7 @@ func (p *NewsPersistor) getAll(ctx context.Context, filter *bson.M, limit *int, 
 		opts.SetLimit(int64(*limit))
 	}
 	if skip != nil {
-		opts.SetLimit(int64(*skip))
+		opts.SetSkip(int64(*skip))
 	}
 	if filter == nil {
 		filter = &bson.M{}
