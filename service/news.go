@@ -64,6 +64,12 @@ func (s *NewsService) DeleteNews(ctx context.Context, newsId string) (bool, erro
 }
 
 func (s *NewsService) PatchNews(ctx context.Context, newsId string, update persistence.News) (*persistence.News, error) {
+	validate := validator.New()
+	err := validate.Struct(update)
+	if err != nil {
+		return nil, err
+	}
+
 	cleaned := transformer.Clean(update, "update")
 	return s.p.PatchNews(ctx, newsId, cleaned)
 }
